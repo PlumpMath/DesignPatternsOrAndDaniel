@@ -19,8 +19,6 @@ namespace _523116184522448
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
 
-            //LoginResult result = FacebookService.Login("523116184522448", "public_profile", "user_posts", "user_photos");
-            //int x = 6;
         }
     }
 }

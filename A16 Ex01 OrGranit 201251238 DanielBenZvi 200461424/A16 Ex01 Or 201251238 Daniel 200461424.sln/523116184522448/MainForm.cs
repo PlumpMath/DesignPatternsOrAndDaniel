@@ -14,23 +14,30 @@ namespace _523116184522448
 {
     public partial class MainForm : Form
     {
+        private User m_LoggedInUser;
+        private EventImagesForm m_ImagesFromEventsFrom;
+        private FormDanielFeature m_DanielFeatureForm;
+
         public MainForm()
         {
             InitializeComponent();
+            buttonGetEvents.Enabled = false;
+            buttonGetImagesStats.Enabled = false;
         }
-
-        User m_LoggedInUser;
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             //Login
-            LoginResult result = FacebookService.Login("523116184522448", "public_profile", "user_posts", "user_photos", "user_events");
+            LoginResult result = FacebookService.Login("523116184522448", "public_profile", "user_posts",
+                "user_photos", "user_events");
 
             //Verify input
             if (!string.IsNullOrEmpty(result.AccessToken))
             {
                 m_LoggedInUser = result.LoggedInUser;
                 fetchUserInfo();
+                buttonGetEvents.Enabled = true;
+                buttonGetImagesStats.Enabled = true;
             }
             else
             {
@@ -47,22 +54,16 @@ namespace _523116184522448
 
         private void buttonGetImagesStats_Click(object sender, EventArgs e)
         {
-            panelImagesStats.Visible = true;
+            m_DanielFeatureForm = new FormDanielFeature();
+            m_DanielFeatureForm.User = m_LoggedInUser;
+            m_DanielFeatureForm.Show();
         }
 
         private void buttonGetEvents_Click(object sender, EventArgs e)
         {
-            panelEvents.Visible = true;
-        }
-
-        private void buttonBack_Click_1(object sender, EventArgs e)
-        {
-            panelEvents.Visible = false;
-        }
-
-        private void buttonBackFromImages_Click(object sender, EventArgs e)
-        {
-            panelImagesStats.Visible = false;
+            m_ImagesFromEventsFrom = new EventImagesForm();
+            m_ImagesFromEventsFrom.User = m_LoggedInUser;
+            m_ImagesFromEventsFrom.Show();
         }
     }
 }
