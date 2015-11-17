@@ -34,6 +34,7 @@
             this.listBoxEvents = new System.Windows.Forms.ListBox();
             this.listView = new System.Windows.Forms.ListView();
             this.imageListEventImages = new System.Windows.Forms.ImageList(this.components);
+            this.labelEventImages = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonFetchEvents
@@ -48,6 +49,7 @@
             this.listBoxEvents.FormattingEnabled = true;
             resources.ApplyResources(this.listBoxEvents, "listBoxEvents");
             this.listBoxEvents.Name = "listBoxEvents";
+            this.listBoxEvents.SelectedIndexChanged += new System.EventHandler(this.listBoxEvents_SelectedIndexChanged);
             // 
             // listView
             // 
@@ -62,15 +64,22 @@
             resources.ApplyResources(this.imageListEventImages, "imageListEventImages");
             this.imageListEventImages.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // labelEventImages
+            // 
+            resources.ApplyResources(this.labelEventImages, "labelEventImages");
+            this.labelEventImages.Name = "labelEventImages";
+            // 
             // EventImagesForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelEventImages);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.listBoxEvents);
             this.Controls.Add(this.buttonFetchEvents);
             this.Name = "EventImagesForm";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -80,5 +89,6 @@
         private System.Windows.Forms.ListBox listBoxEvents;
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.ImageList imageListEventImages;
+        private System.Windows.Forms.Label labelEventImages;
     }
 }

@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonFetchEvents.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 26</value>
+    <value>69, 12</value>
   </data>
   <data name="buttonFetchEvents.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 23</value>
@@ -141,13 +141,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonFetchEvents.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="listBoxEvents.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 56</value>
+    <value>24, 82</value>
   </data>
   <data name="listBoxEvents.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 251</value>
+    <value>266, 225</value>
   </data>
   <data name="listBoxEvents.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -162,19 +162,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;listBoxEvents.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <metadata name="imageListEventImages.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <data name="imageListEventImages.ImageSize" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
+    <value>256, 256</value>
   </data>
   <data name="listView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 26</value>
+    <value>308, 26</value>
   </data>
   <data name="listView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>431, 281</value>
+    <value>316, 281</value>
   </data>
   <data name="listView.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -189,6 +189,33 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;listView.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelEventImages.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelEventImages.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 38</value>
+  </data>
+  <data name="labelEventImages.Size" type="System.Drawing.Size, System.Drawing">
+    <value>261, 13</value>
+  </data>
+  <data name="labelEventImages.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelEventImages.Text" xml:space="preserve">
+    <value>Choose an event to see photos taken from its location</value>
+  </data>
+  <data name="&gt;&gt;labelEventImages.Name" xml:space="preserve">
+    <value>labelEventImages</value>
+  </data>
+  <data name="&gt;&gt;labelEventImages.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelEventImages.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelEventImages.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
