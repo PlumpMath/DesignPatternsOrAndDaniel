@@ -21,8 +21,8 @@ namespace _523116184522448
         public MainForm()
         {
             InitializeComponent();
-            buttonGetEvents.Enabled = true;//TODO: change both to false!
-            buttonGetImagesStats.Enabled = true;
+            buttonGetEvents.Enabled = false; 
+            buttonGetImagesStats.Enabled = false;
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)

@@ -24,10 +24,7 @@ namespace _523116184522448
 
         public FormDanielFeature()
         {
-            //TODO: remove writelines
-            Console.WriteLine("initializing");
             InitializeComponent();
-            
         }
 
         private void LoadMap()
@@ -36,15 +33,15 @@ namespace _523116184522448
             GMaps.Instance.Mode = AccessMode.ServerOnly;
             gMapControl.SetPositionByKeywords("dubnov, Tel Aviv, Israel");
 
-
             m_MarkersOverlay = new GMapOverlay("markers");
             foreach (Event fbEvent in m_LoggedInUser.Events)
             {
                 Location location = fbEvent.Place.Location;
                 if (location != null)
                 {
+                    PointLatLng point = getLatLong(location);
                     GMap.NET.WindowsForms.Markers.GMarkerGoogle marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
-                        new PointLatLng(fbEvent.Place.Location.Latitude.Value, fbEvent.Place.Location.Longitude.Value),
+                        point,
                         GMap.NET.WindowsForms.Markers.GMarkerGoogleType.red_small);
                     marker.ToolTipText = fbEvent.Name;
                     m_MarkersOverlay.Markers.Add(marker);
@@ -81,11 +78,33 @@ namespace _523116184522448
 
         private void listBoxEvents_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            //TODO: Highlight and focus on selected event.
             Event selectedEvent = listBoxEvents.SelectedItem as Event;
             Location location = selectedEvent.Place.Location;
 
+            if (location != null)
+            {
+                gMapControl.Position = getLatLong(location);
+            }
+            else
+            {
+                gMapControl.ZoomAndCenterMarkers(null);
+            }
         }
+
+        private PointLatLng getLatLong(Location i_location)
+        {
+            PointLatLng coordinates;
+
+            if(i_location == null)
+            {
+                throw new Exception("Null location.");
+            }
+            else
+            {
+                coordinates = new PointLatLng(i_location.Latitude.Value, i_location.Longitude.Value);
+            }
+
+            return coordinates;
+        } 
     }
 }

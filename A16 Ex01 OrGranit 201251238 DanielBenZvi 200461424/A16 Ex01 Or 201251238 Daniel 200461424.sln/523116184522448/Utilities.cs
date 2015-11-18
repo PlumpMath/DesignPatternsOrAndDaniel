@@ -7,7 +7,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace _523116184522448
 {
-    class Utilities
+    public class Utilities
     {
         private User m_LoggedInUser;
 

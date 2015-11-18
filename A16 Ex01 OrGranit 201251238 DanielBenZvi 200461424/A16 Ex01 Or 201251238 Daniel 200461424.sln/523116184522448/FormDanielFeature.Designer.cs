@@ -1,6 +1,6 @@
 ﻿namespace _523116184522448
 {
-    partial class FormDanielFeature
+    public partial class FormDanielFeature
     {
         /// <summary>
         /// Required designer variable.
@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -38,7 +39,7 @@
             // 
             this.labelEventImages.AutoSize = true;
             this.labelEventImages.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelEventImages.Location = new System.Drawing.Point(17, 38);
+            this.labelEventImages.Location = new System.Drawing.Point(26, 43);
             this.labelEventImages.Name = "labelEventImages";
             this.labelEventImages.Size = new System.Drawing.Size(232, 13);
             this.labelEventImages.TabIndex = 6;
@@ -47,9 +48,9 @@
             // listBoxEvents
             // 
             this.listBoxEvents.FormattingEnabled = true;
-            this.listBoxEvents.Location = new System.Drawing.Point(12, 82);
+            this.listBoxEvents.Location = new System.Drawing.Point(12, 69);
             this.listBoxEvents.Name = "listBoxEvents";
-            this.listBoxEvents.Size = new System.Drawing.Size(266, 225);
+            this.listBoxEvents.Size = new System.Drawing.Size(266, 251);
             this.listBoxEvents.TabIndex = 5;
             this.listBoxEvents.SelectedIndexChanged += new System.EventHandler(this.listBoxEvents_SelectedIndexChanged);
             // 
@@ -64,7 +65,7 @@
             this.buttonFetchEvents.UseVisualStyleBackColor = true;
             this.buttonFetchEvents.Click += new System.EventHandler(this.buttonFetchEvents_Click);
             // 
-            // gMapControl1
+            // gMapControl
             // 
             this.gMapControl.Bearing = 0F;
             this.gMapControl.CanDragMap = true;
@@ -77,7 +78,7 @@
             this.gMapControl.MaxZoom = 30;
             this.gMapControl.MinZoom = 1;
             this.gMapControl.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
-            this.gMapControl.Name = "gMapControl1";
+            this.gMapControl.Name = "gMapControl";
             this.gMapControl.NegativeMode = false;
             this.gMapControl.PolygonsEnabled = false;
             this.gMapControl.RetryLoadTile = 0;
@@ -85,7 +86,7 @@
             this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapControl.ShowTileGridLines = false;
-            this.gMapControl.Size = new System.Drawing.Size(315, 295);
+            this.gMapControl.Size = new System.Drawing.Size(315, 302);
             this.gMapControl.TabIndex = 7;
             this.gMapControl.Zoom = 0D;
             // 
@@ -98,6 +99,8 @@
             this.Controls.Add(this.labelEventImages);
             this.Controls.Add(this.listBoxEvents);
             this.Controls.Add(this.buttonFetchEvents);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "FormDanielFeature";
             this.ResumeLayout(false);
             this.PerformLayout();
