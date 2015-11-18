@@ -34,11 +34,11 @@
   <ItemGroup>
     <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\temp\Facebook.dll</HintPath>
+      <HintPath>Resources\Facebook.dll</HintPath>
     </Reference>
-    <Reference Include="FbGraphApiWrapper, Version=6.8.0.14, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="FbGraphApiWrapper, Version=6.8.0.13, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\temp\FbGraphApiWrapper.dll</HintPath>
+      <HintPath>Resources\FbGraphApiWrapper.dll</HintPath>
     </Reference>
     <Reference Include="GMap.NET.Core, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -60,9 +60,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="eEventRepetitionPattern.cs" />
-    <Compile Include="eEventVisibility.cs" />
-    <Compile Include="EventDetails.cs" />
     <Compile Include="FormDanielFeature.cs">
       <SubType>Form</SubType>
     </Compile>
