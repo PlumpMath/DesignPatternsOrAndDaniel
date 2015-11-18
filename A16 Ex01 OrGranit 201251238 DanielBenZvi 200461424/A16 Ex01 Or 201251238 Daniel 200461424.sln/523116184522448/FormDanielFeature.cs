@@ -15,6 +15,8 @@ namespace _523116184522448
     public partial class FormDanielFeature : Form
     {
         private User m_LoggedInUser;
+        private GMapOverlay m_MarkersOverlay;
+
         public User User 
         {
             set { m_LoggedInUser = value; }
@@ -25,41 +27,65 @@ namespace _523116184522448
             //TODO: remove writelines
             Console.WriteLine("initializing");
             InitializeComponent();
-            Console.WriteLine("loading");
-            LoadMap();
             
         }
 
         private void LoadMap()
         {
-            //TODO: remove writelines
-            Console.WriteLine("LOADING!!");
-            gMapControl1.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
+            gMapControl.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
             GMaps.Instance.Mode = AccessMode.ServerOnly;
-            gMapControl1.SetPositionByKeywords("dubnov, Tel Aviv, Israel");
+            gMapControl.SetPositionByKeywords("dubnov, Tel Aviv, Israel");
 
 
-            GMapOverlay markersOverlay = new GMapOverlay("markers");
-            GMap.NET.WindowsForms.Markers.GMarkerGoogle marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle((new PointLatLng(31.98, 34.76)), GMap.NET.WindowsForms.Markers.GMarkerGoogleType.green);
-            GMap.NET.WindowsForms.Markers.GMarkerGoogle marker2 = new GMap.NET.WindowsForms.Markers.GMarkerGoogle((new PointLatLng(31.40, 34.30)), GMap.NET.WindowsForms.Markers.GMarkerGoogleType.blue);
-            markersOverlay.Markers.Add(marker);
-            markersOverlay.Markers.Add(marker2);
-            gMapControl1.Overlays.Add(markersOverlay);
+            m_MarkersOverlay = new GMapOverlay("markers");
+            foreach (Event fbEvent in m_LoggedInUser.Events)
+            {
+                Location location = fbEvent.Place.Location;
+                if (location != null)
+                {
+                    GMap.NET.WindowsForms.Markers.GMarkerGoogle marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
+                        new PointLatLng(fbEvent.Place.Location.Latitude.Value, fbEvent.Place.Location.Longitude.Value),
+                        GMap.NET.WindowsForms.Markers.GMarkerGoogleType.red_small);
+                    marker.ToolTipText = fbEvent.Name;
+                    m_MarkersOverlay.Markers.Add(marker);
+                }
+            }
 
-
-            gMapControl1.ZoomAndCenterMarkers(null);
-
-
-
-
-
+            gMapControl.Overlays.Add(m_MarkersOverlay);
+            gMapControl.ZoomAndCenterMarkers(null);
         }
 
-        public FormDanielFeature(FacebookWrapper.ObjectModel.User m_LoggedInUser)
+        private void buttonFetchEvents_Click(object sender, EventArgs e)
         {
-            // TODO: Complete member initialization
-            this.m_LoggedInUser = m_LoggedInUser;
+            Cursor.Current = Cursors.WaitCursor;
+            fetchEvents();
+            Cursor.Current = Cursors.Default;
         }
 
+        private void fetchEvents()
+        {
+            listBoxEvents.Items.Clear();
+            listBoxEvents.DisplayMember = "Name";
+            foreach (Event fbEvent in m_LoggedInUser.Events)
+            {
+                listBoxEvents.Items.Add(fbEvent);
+            }
+
+            if (m_LoggedInUser.Events.Count == 0)
+            {
+                MessageBox.Show("No Events to retrieve :(");
+            }
+
+            LoadMap();
+        }
+
+        private void listBoxEvents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            //TODO: Highlight and focus on selected event.
+            Event selectedEvent = listBoxEvents.SelectedItem as Event;
+            Location location = selectedEvent.Place.Location;
+
+        }
     }
 }
