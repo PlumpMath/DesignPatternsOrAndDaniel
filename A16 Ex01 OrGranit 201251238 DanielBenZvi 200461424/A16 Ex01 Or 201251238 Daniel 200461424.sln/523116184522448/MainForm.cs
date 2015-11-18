@@ -21,21 +21,26 @@ namespace _523116184522448
         public MainForm()
         {
             InitializeComponent();
-            buttonGetEvents.Enabled = false;
-            buttonGetImagesStats.Enabled = true;//TODO: change to false!!
+            buttonGetEvents.Enabled = true;//TODO: change both to false!
+            buttonGetImagesStats.Enabled = true;
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
-        {
-            //Login
-            LoginResult result = FacebookService.Login("523116184522448", "public_profile", "user_posts",
-                "user_photos", "user_events");
+        {            
+            // Login
+            LoginResult result = FacebookService.Login(
+                "523116184522448",
+                "public_profile",
+                "user_posts",
+                "user_photos", 
+                "user_events");
 
-            //Verify input
+            // Verify input
             if (!string.IsNullOrEmpty(result.AccessToken))
             {
                 m_LoggedInUser = result.LoggedInUser;
                 fetchUserInfo();
+                buttonLogin.Enabled = false;
                 buttonGetEvents.Enabled = true;
                 buttonGetImagesStats.Enabled = true;
             }
@@ -43,8 +48,6 @@ namespace _523116184522448
             {
                 MessageBox.Show(result.ErrorMessage);
             }
-
-            //TODO: Make app buttons clickable.
         }
 
         private void fetchUserInfo()
