@@ -1,6 +1,6 @@
 ﻿namespace _523116184522448
 {
-    partial class EventImagesForm
+    public partial class EventImagesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -35,6 +36,13 @@
             this.listView = new System.Windows.Forms.ListView();
             this.imageListEventImages = new System.Windows.Forms.ImageList(this.components);
             this.labelEventImages = new System.Windows.Forms.Label();
+            this.labelPhotosList = new System.Windows.Forms.Label();
+            this.textBoxCommentPhoto = new System.Windows.Forms.TextBox();
+            this.buttonPostComment = new System.Windows.Forms.Button();
+            this.labelCommentPhoto = new System.Windows.Forms.Label();
+            this.buttonlikePhto = new System.Windows.Forms.Button();
+            this.listBoxComments = new System.Windows.Forms.ListBox();
+            this.labelListOfComments = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonFetchEvents
@@ -57,6 +65,7 @@
             resources.ApplyResources(this.listView, "listView");
             this.listView.Name = "listView";
             this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
             // 
             // imageListEventImages
             // 
@@ -69,14 +78,63 @@
             resources.ApplyResources(this.labelEventImages, "labelEventImages");
             this.labelEventImages.Name = "labelEventImages";
             // 
+            // labelPhotosList
+            // 
+            resources.ApplyResources(this.labelPhotosList, "labelPhotosList");
+            this.labelPhotosList.Name = "labelPhotosList";
+            // 
+            // textBoxCommentPhoto
+            // 
+            resources.ApplyResources(this.textBoxCommentPhoto, "textBoxCommentPhoto");
+            this.textBoxCommentPhoto.Name = "textBoxCommentPhoto";
+            // 
+            // buttonPostComment
+            // 
+            resources.ApplyResources(this.buttonPostComment, "buttonPostComment");
+            this.buttonPostComment.Name = "buttonPostComment";
+            this.buttonPostComment.UseVisualStyleBackColor = true;
+            this.buttonPostComment.Click += new System.EventHandler(this.buttonPostComment_Click);
+            // 
+            // labelCommentPhoto
+            // 
+            resources.ApplyResources(this.labelCommentPhoto, "labelCommentPhoto");
+            this.labelCommentPhoto.Name = "labelCommentPhoto";
+            // 
+            // buttonlikePhto
+            // 
+            resources.ApplyResources(this.buttonlikePhto, "buttonlikePhto");
+            this.buttonlikePhto.Name = "buttonlikePhto";
+            this.buttonlikePhto.UseVisualStyleBackColor = true;
+            this.buttonlikePhto.Click += new System.EventHandler(this.buttonlikePhto_Click);
+            // 
+            // listBoxComments
+            // 
+            this.listBoxComments.FormattingEnabled = true;
+            resources.ApplyResources(this.listBoxComments, "listBoxComments");
+            this.listBoxComments.Name = "listBoxComments";
+            // 
+            // labelListOfComments
+            // 
+            resources.ApplyResources(this.labelListOfComments, "labelListOfComments");
+            this.labelListOfComments.Name = "labelListOfComments";
+            // 
             // EventImagesForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelListOfComments);
+            this.Controls.Add(this.listBoxComments);
+            this.Controls.Add(this.buttonlikePhto);
+            this.Controls.Add(this.labelCommentPhoto);
+            this.Controls.Add(this.buttonPostComment);
+            this.Controls.Add(this.textBoxCommentPhoto);
+            this.Controls.Add(this.labelPhotosList);
             this.Controls.Add(this.labelEventImages);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.listBoxEvents);
             this.Controls.Add(this.buttonFetchEvents);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "EventImagesForm";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -90,5 +148,12 @@
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.ImageList imageListEventImages;
         private System.Windows.Forms.Label labelEventImages;
+        private System.Windows.Forms.Label labelPhotosList;
+        private System.Windows.Forms.TextBox textBoxCommentPhoto;
+        private System.Windows.Forms.Button buttonPostComment;
+        private System.Windows.Forms.Label labelCommentPhoto;
+        private System.Windows.Forms.Button buttonlikePhto;
+        private System.Windows.Forms.ListBox listBoxComments;
+        private System.Windows.Forms.Label labelListOfComments;
     }
 }
