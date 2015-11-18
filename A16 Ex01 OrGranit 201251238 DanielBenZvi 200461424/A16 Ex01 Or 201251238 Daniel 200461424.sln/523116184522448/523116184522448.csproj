@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="eEventRepetitionPattern.cs" />
+    <Compile Include="eEventVisibility.cs" />
+    <Compile Include="EventDetails.cs" />
     <Compile Include="FormDanielFeature.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +93,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\EventDetails.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

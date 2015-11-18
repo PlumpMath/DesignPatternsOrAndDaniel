@@ -8,15 +8,29 @@ namespace _523116184522448
 {
     internal class EventDetails
     {
-        DateTime m_StartingTime;
-        DateTime m_EndingTime;
-        eEventVisibility m_Visibility;
-        string m_Name;
-        Location m_Location;
+        private DateTime m_StartingTime;
+        private DateTime m_EndingTime;
+        private eEventVisibility m_Visibility;
+        private eEventRepetitionPattern m_RepetitionPattern;
+        private string m_Name;
+        private Location m_Location;
 
-        EventDetails()
+        public eEventRepetitionPattern RepetitionPattern
         {
+            get
+            {
+                return m_RepetitionPattern;
+            }
 
+            set
+            {
+                m_RepetitionPattern = value;
+            }
+        }
+
+        public EventDetails()
+        {
+            m_RepetitionPattern = eEventRepetitionPattern.Daily;
         }
     }
 }

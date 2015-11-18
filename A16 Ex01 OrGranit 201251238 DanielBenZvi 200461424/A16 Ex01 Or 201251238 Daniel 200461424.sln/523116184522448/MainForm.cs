@@ -22,7 +22,7 @@ namespace _523116184522448
         {
             InitializeComponent();
             buttonGetEvents.Enabled = false;
-            buttonGetImagesStats.Enabled = false;
+            buttonGetImagesStats.Enabled = true;//TODO: change to false!!
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
