@@ -119,10 +119,10 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonFetchEvents.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 12</value>
+    <value>75, 335</value>
   </data>
   <data name="buttonFetchEvents.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 23</value>
+    <value>149, 49</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonFetchEvents.TabIndex" type="System.Int32, mscorlib">
@@ -141,13 +141,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonFetchEvents.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>10</value>
   </data>
   <data name="listBoxEvents.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 82</value>
+    <value>12, 27</value>
   </data>
   <data name="listBoxEvents.Size" type="System.Drawing.Size, System.Drawing">
-    <value>266, 225</value>
+    <value>316, 290</value>
   </data>
   <data name="listBoxEvents.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -162,7 +162,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;listBoxEvents.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>9</value>
   </data>
   <metadata name="imageListEventImages.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -171,10 +171,10 @@
     <value>256, 256</value>
   </data>
   <data name="listView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>308, 26</value>
+    <value>334, 27</value>
   </data>
   <data name="listView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>316, 281</value>
+    <value>316, 290</value>
   </data>
   <data name="listView.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -189,13 +189,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;listView.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>8</value>
   </data>
   <data name="labelEventImages.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelEventImages.Location" type="System.Drawing.Point, System.Drawing">
-    <value>29, 38</value>
+    <value>31, 11</value>
   </data>
   <data name="labelEventImages.Size" type="System.Drawing.Size, System.Drawing">
     <value>261, 13</value>
@@ -216,16 +216,190 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelEventImages.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="labelPhotosList.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelPhotosList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>416, 11</value>
+  </data>
+  <data name="labelPhotosList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 13</value>
+  </data>
+  <data name="labelPhotosList.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="labelPhotosList.Text" xml:space="preserve">
+    <value>Click a photo to view its details</value>
+  </data>
+  <data name="&gt;&gt;labelPhotosList.Name" xml:space="preserve">
+    <value>labelPhotosList</value>
+  </data>
+  <data name="&gt;&gt;labelPhotosList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPhotosList.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelPhotosList.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="textBoxCommentPhoto.Location" type="System.Drawing.Point, System.Drawing">
+    <value>656, 335</value>
+  </data>
+  <data name="textBoxCommentPhoto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>316, 20</value>
+  </data>
+  <data name="textBoxCommentPhoto.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;textBoxCommentPhoto.Name" xml:space="preserve">
+    <value>textBoxCommentPhoto</value>
+  </data>
+  <data name="&gt;&gt;textBoxCommentPhoto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxCommentPhoto.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxCommentPhoto.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="buttonPostComment.Location" type="System.Drawing.Point, System.Drawing">
+    <value>788, 361</value>
+  </data>
+  <data name="buttonPostComment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 23</value>
+  </data>
+  <data name="buttonPostComment.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="buttonPostComment.Text" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="&gt;&gt;buttonPostComment.Name" xml:space="preserve">
+    <value>buttonPostComment</value>
+  </data>
+  <data name="&gt;&gt;buttonPostComment.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonPostComment.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonPostComment.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="labelCommentPhoto.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelCommentPhoto.Location" type="System.Drawing.Point, System.Drawing">
+    <value>745, 319</value>
+  </data>
+  <data name="labelCommentPhoto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 13</value>
+  </data>
+  <data name="labelCommentPhoto.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="labelCommentPhoto.Text" xml:space="preserve">
+    <value>Post a Comment to this photo</value>
+  </data>
+  <data name="&gt;&gt;labelCommentPhoto.Name" xml:space="preserve">
+    <value>labelCommentPhoto</value>
+  </data>
+  <data name="&gt;&gt;labelCommentPhoto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelCommentPhoto.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelCommentPhoto.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonlikePhto.Location" type="System.Drawing.Point, System.Drawing">
+    <value>419, 335</value>
+  </data>
+  <data name="buttonlikePhto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 49</value>
+  </data>
+  <data name="buttonlikePhto.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="buttonlikePhto.Text" xml:space="preserve">
+    <value>Like photo</value>
+  </data>
+  <data name="&gt;&gt;buttonlikePhto.Name" xml:space="preserve">
+    <value>buttonlikePhto</value>
+  </data>
+  <data name="&gt;&gt;buttonlikePhto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonlikePhto.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonlikePhto.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="listBoxComments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>656, 27</value>
+  </data>
+  <data name="listBoxComments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>316, 290</value>
+  </data>
+  <data name="listBoxComments.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;listBoxComments.Name" xml:space="preserve">
+    <value>listBoxComments</value>
+  </data>
+  <data name="&gt;&gt;listBoxComments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listBoxComments.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;listBoxComments.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelListOfComments.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelListOfComments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>772, 10</value>
+  </data>
+  <data name="labelListOfComments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 13</value>
+  </data>
+  <data name="labelListOfComments.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="labelListOfComments.Text" xml:space="preserve">
+    <value>Photo Comments</value>
+  </data>
+  <data name="&gt;&gt;labelListOfComments.Name" xml:space="preserve">
+    <value>labelListOfComments</value>
+  </data>
+  <data name="&gt;&gt;labelListOfComments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelListOfComments.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelListOfComments.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>636, 322</value>
+    <value>982, 389</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Images From Events</value>
