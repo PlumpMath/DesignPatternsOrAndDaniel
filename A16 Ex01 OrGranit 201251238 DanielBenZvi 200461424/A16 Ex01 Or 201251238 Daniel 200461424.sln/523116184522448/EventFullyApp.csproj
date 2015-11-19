@@ -7,8 +7,8 @@
     <ProjectGuid>{B8B066E6-AC04-4484-8426-7B82995B6C9E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_523116184522448</RootNamespace>
-    <AssemblyName>523116184522448</AssemblyName>
+    <RootNamespace>_EventFullyApp</RootNamespace>
+    <AssemblyName>EventFullyApp</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -98,6 +98,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\DataSources\EventDetails.datasource" />
     <None Include="Properties\Settings.settings">
