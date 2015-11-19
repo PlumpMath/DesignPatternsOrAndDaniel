@@ -39,13 +39,13 @@ namespace _523116184522448
             }
             else
             {
-                MessageBox.Show(m_utils.getLoggedInError());
+                MessageBox.Show(m_utils.LoggedInError());
             }
         }
 
         private void fetchUserInfo()
         {
-            picture_profilePictureBox.LoadAsync(m_utils.getUserPictureUrl());
+            picture_profilePictureBox.LoadAsync(m_utils.UserPictureUrl());
         }
 
         private void buttonEventLocations_Click(object sender, EventArgs e)

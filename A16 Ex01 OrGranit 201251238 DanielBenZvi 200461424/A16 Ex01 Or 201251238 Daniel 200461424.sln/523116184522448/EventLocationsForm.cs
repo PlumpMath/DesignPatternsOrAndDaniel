@@ -37,11 +37,11 @@ namespace _523116184522448
             {
                 if (m_utils.HasLocationEvent(obj))
                 {
-                    PointLatLng point = getLatLong(m_utils.getLatLong(obj));
+                    PointLatLng point = getLatLong(m_utils.GetLatLong(obj));
                     GMap.NET.WindowsForms.Markers.GMarkerGoogle marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
                         point,
                         GMap.NET.WindowsForms.Markers.GMarkerGoogleType.red_small);
-                    marker.ToolTipText = m_utils.getEventName(obj);
+                    marker.ToolTipText = m_utils.GetEventName(obj);
                     m_MarkersOverlay.Markers.Add(marker);
                 }
             }
@@ -72,7 +72,7 @@ namespace _523116184522448
         {       
             if (m_utils.HasLocationEvent(listBoxEvents.SelectedItem))
             {
-                gMapControl.Position = getLatLong(m_utils.getLatLong(listBoxEvents.SelectedItem));
+                gMapControl.Position = getLatLong(m_utils.GetLatLong(listBoxEvents.SelectedItem));
             }
             else
             {

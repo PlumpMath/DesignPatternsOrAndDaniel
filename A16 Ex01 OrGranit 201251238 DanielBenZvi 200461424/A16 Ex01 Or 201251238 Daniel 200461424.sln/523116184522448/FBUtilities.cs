@@ -41,12 +41,12 @@ namespace _523116184522448
             return isLoggedIn;
         }
 
-        internal string getLoggedInError()
+        internal string LoggedInError()
         {
             return m_result.ErrorMessage;
         }
 
-        internal string getUserPictureUrl()
+        internal string UserPictureUrl()
         {
             return m_LoggedInUser.PictureNormalURL;
         }
@@ -147,7 +147,7 @@ namespace _523116184522448
             } 
         }
 
-        internal void resetEventSelectedPhoto()
+        internal void ResetEventSelectedPhoto()
         {
             m_EventSelectedPhoto = null;
         }
@@ -194,7 +194,7 @@ namespace _523116184522448
             }
         }
 
-        internal PointD getLatLong(object i_Event)
+        internal PointD GetLatLong(object i_Event)
         {
             PointD point = new PointD();
             Event selectedEvent = i_Event as Event;
@@ -208,7 +208,7 @@ namespace _523116184522448
             return point;            
         }
 
-        internal string getEventName(object i_Event)
+        internal string GetEventName(object i_Event)
         {
             Event selectedEvent = i_Event as Event;
             return selectedEvent.Name;
