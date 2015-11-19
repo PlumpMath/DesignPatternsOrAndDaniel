@@ -159,22 +159,6 @@ namespace _523116184522448
             }
         }
 
-        // adds 'collection' events to 'listBox'
-        private void fetchEvents()
-        {
-            listBoxEvents.Items.Clear();
-            listBoxEvents.DisplayMember = "Name";
-            foreach (Object obj in m_utils.Events)
-            {
-                listBoxEvents.Items.Add(obj);
-            }
-
-            if (listBoxEvents.Items.Count == 0)
-            {
-                MessageBox.Show("No Events to retrieve :(");
-            }
-        }
-
         private void fetchCollection(ListBox i_Listbox, IEnumerable<object> i_Collection, string i_MemberToDisplay)
         {
             i_Listbox.Items.Clear();
