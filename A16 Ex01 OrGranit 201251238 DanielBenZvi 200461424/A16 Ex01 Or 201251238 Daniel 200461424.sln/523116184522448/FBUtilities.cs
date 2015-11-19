@@ -56,10 +56,10 @@ namespace _523116184522448
             get { return m_LoggedInUser.Events; }     
         }
 
-        internal bool HasAlbums(object p)
+        internal bool HasAlbums(object i_Page)
         {
             bool hasAlbums = false;
-            Event selectedEvent = p as Event;
+            Event selectedEvent = i_Page as Event;
             Page location = selectedEvent.Place;
             FacebookObjectCollection<Album> locationAlbums;
 
@@ -83,9 +83,9 @@ namespace _523116184522448
             return hasAlbums;
         }
 
-        internal void GenerateRandomPhotos(object p, int k_NumOfImages)
+        internal void GenerateRandomPhotos(object i_Page, int k_NumOfImages)
         {
-            Event selectedEvent = p as Event;
+            Event selectedEvent = i_Page as Event;
             FacebookObjectCollection<Album> locationAlbums = selectedEvent.Place.Albums;
             m_photosToDisplay = new List<Photo>();
 
