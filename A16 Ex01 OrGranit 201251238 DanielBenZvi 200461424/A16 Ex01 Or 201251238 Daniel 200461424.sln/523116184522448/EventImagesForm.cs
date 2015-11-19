@@ -39,7 +39,7 @@ namespace _523116184522448
         // new selected item in 'listBoxEvents'
         private void listBoxEvents_SelectedIndexChanged(object sender, EventArgs e)
         {
-            m_Utils.resetEventSelectedPhoto();
+            m_Utils.ResetEventSelectedPhoto();
             listBoxComments.Items.Clear();
             Cursor.Current = Cursors.WaitCursor;
             displaySelectedEventImages();
