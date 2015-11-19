@@ -11,7 +11,7 @@ using GMap.NET;
 
 namespace _523116184522448
 {
-    public partial class FormDanielFeature : Form
+    public partial class EventLocationsForm : Form
     {
         private FBUtilities m_utils;
         private GMapOverlay m_MarkersOverlay;
@@ -21,7 +21,7 @@ namespace _523116184522448
             set { m_utils = value; }
         }
 
-        public FormDanielFeature()
+        public EventLocationsForm()
         {
             InitializeComponent();
         }

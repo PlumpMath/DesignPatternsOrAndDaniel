@@ -15,7 +15,14 @@ namespace _523116184522448
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            try
+            {
+                Application.Run(new MainForm());
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("App overflow");
+            }
         }
     }
 }

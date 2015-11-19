@@ -1,6 +1,6 @@
 ﻿namespace _523116184522448
 {
-    public partial class FormDanielFeature
+    public partial class EventLocationsForm
     {
         /// <summary>
         /// Required designer variable.

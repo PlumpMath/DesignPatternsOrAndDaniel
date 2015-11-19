@@ -15,7 +15,7 @@ namespace _523116184522448
     public partial class MainForm : Form
     {
         private EventImagesForm m_ImagesFromEventsFrom;
-        private FormDanielFeature m_DanielFeatureForm;
+        private EventLocationsForm m_DanielFeatureForm;
         private FBUtilities m_utils;
 
         public MainForm()
@@ -50,7 +50,7 @@ namespace _523116184522448
 
         private void buttonGetImagesStats_Click(object sender, EventArgs e)
         {
-            m_DanielFeatureForm = new FormDanielFeature();
+            m_DanielFeatureForm = new EventLocationsForm();
             m_DanielFeatureForm.FBUtilities = m_utils;
             m_DanielFeatureForm.Show();
         }
