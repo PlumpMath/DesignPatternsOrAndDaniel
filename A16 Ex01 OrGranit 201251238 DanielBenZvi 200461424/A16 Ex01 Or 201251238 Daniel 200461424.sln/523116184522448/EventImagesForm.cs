@@ -6,20 +6,17 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using FacebookWrapper.ObjectModel;
 
 namespace _523116184522448
 {
     public partial class EventImagesForm : Form
     {
         protected const int k_NumOfImages = 5;
-        private User m_LoggedInUser;
-        private List<Photo> m_PhotosToDisplay;
-        private Photo m_SelectedPhoto;
+        private FBUtilities m_utils;
 
-        public User User 
+        public FBUtilities FBUtilities 
         {
-            set { m_LoggedInUser = value; }
+            set { m_utils = value; }
         }
 
         public EventImagesForm()
@@ -31,14 +28,19 @@ namespace _523116184522448
         private void buttonFetchEvents_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            fetchEvents();
-            Cursor.Current = Cursors.Default;         
+            fetchCollection(listBoxEvents, m_utils.Events, "Name");
+            Cursor.Current = Cursors.Default;
+            if (listBoxEvents.Items.Count == 0)
+            {
+                MessageBox.Show("No Events to retrieve :(");
+            }
+
         }
 
         // new selected item in 'listBoxEvents'
         private void listBoxEvents_SelectedIndexChanged(object sender, EventArgs e)
         {
-            m_SelectedPhoto = null;
+            m_utils.resetSelectedPhoto();
             listBoxComments.Items.Clear();
             Cursor.Current = Cursors.WaitCursor;
             displaySelectedEventImages();
@@ -52,8 +54,12 @@ namespace _523116184522448
             {
                 listBoxComments.Items.Clear();
                 int selectedIndex = listView.SelectedItems[0].ImageIndex;
-                m_SelectedPhoto = m_PhotosToDisplay[selectedIndex];
-                displayComments(m_SelectedPhoto.Comments);
+                m_utils.SelectedPhoto = selectedIndex;
+                fetchCollection(listBoxComments, m_utils.Comments, "Message");
+                if (listBoxComments.Items.Count == 0)
+                {
+                    MessageBox.Show("No comments to retrieve :(");
+                }
             }         
         }
 
@@ -70,31 +76,22 @@ namespace _523116184522448
         {
             Cursor.Current = Cursors.WaitCursor;
             postCommentOnSelectedPhoto();
-            Cursor.Current = Cursors.Default;
-        }
-
-        // adds all the comments in from 'i_comments' to 'listBoxComments'
-        private void displayComments(FacebookObjectCollection<Comment> i_comments)
-        {
-            listBoxComments.DisplayMember = "Message";
-            foreach (Comment comment in i_comments)
+            if (m_utils.HasSelectedPhoto)
             {
-                if (!string.IsNullOrEmpty(comment.Message))
-                {
-                    listBoxComments.Items.Add(comment);
-                }
-            }
+                fetchCollection(listBoxComments, m_utils.Comments, "Message");
+            }           
+            Cursor.Current = Cursors.Default;
         }
 
         // post text from 'textBoxCommentPhoto' as a comment to 'm_SelectedPhoto'
         private void postCommentOnSelectedPhoto()
         {
-            if (m_SelectedPhoto != null)
+ 
+            if (m_utils.HasSelectedPhoto)
             {
                 if (!string.IsNullOrEmpty(textBoxCommentPhoto.Text))
                 {
-                    Comment comment = m_SelectedPhoto.Comment(textBoxCommentPhoto.Text);
-                    if (comment != null)
+                    if (m_utils.Comment(textBoxCommentPhoto.Text))
                     {
                         MessageBox.Show("Comment Succeded!");
                         textBoxCommentPhoto.Clear();
@@ -114,13 +111,13 @@ namespace _523116184522448
         // like 'm_SelectedPhoto'
         private void likeSelectedPhoto()
         {
-            if (m_SelectedPhoto != null)
+            if (m_utils.HasSelectedPhoto)
             {
-                if (m_SelectedPhoto.LikedBy.Contains(m_LoggedInUser))
+                if (m_utils.LikedByUser)
                 {
                     MessageBox.Show("You already like this photo");
                 }
-                else if (m_SelectedPhoto.Like())
+                else if (m_utils.Like())
                 {
                     MessageBox.Show("Liked!");
                 }
@@ -140,83 +137,51 @@ namespace _523116184522448
             listView.Items.Clear();
 
             // the event location is usually a FB page if not we cant show any photos
-            Event selectedEvent = listBoxEvents.SelectedItem as Event;
-            Page location = selectedEvent.Place;
-            FacebookObjectCollection<Album> locationAlbums;
-            List<Photo> photosToDisplay = new List<Photo>();
-
-            // if location (page) exits we try to retrive some random photos from its Albums
-            if (location != null)
+            if (m_utils.HasAlbums(listBoxEvents.SelectedItem))
             {
-                try
-                {
-                    locationAlbums = location.Albums;
-                    if (locationAlbums != null)
-                    {
-                        fetchRandomPhotos(locationAlbums, photosToDisplay, k_NumOfImages);
-                    }
-                }
-                catch (Facebook.FacebookApiException)
-                {
-                    // in some pages when trying to get to their albums facebook api throws an exception
-                }
+                m_utils.GenerateRandomPhotos(listBoxEvents.SelectedItem, k_NumOfImages);
+                displayPhotos(m_utils.PhotosNames, m_utils.PhotosUrls);
             }
 
-            // if we succeeded to retrieve images we now can display them
-            if (photosToDisplay.Count > 0)
-            {
-                displayPhotos(photosToDisplay);
-            }
-            else
+            if (imageListEventImages.Images.Count == 0)
             {
                 MessageBox.Show("No photos to display.");
             }
+            
         }
 
-        private void displayPhotos(List<Photo> photosRetrives)
+        private void displayPhotos(List<string> photosNames, List<string> photosUrl)
         {
-            // Remove duplicte elements from the list of photos
-            m_PhotosToDisplay = photosRetrives.Distinct().ToList();
-            int i = 0;
-            foreach (Photo photo in m_PhotosToDisplay)
+            for (int i = 0; i < photosUrl.Count; i++)
             {
-                imageListEventImages.Images.Add(LoadImage(photo.PictureNormalURL));
-                listView.Items.Add(photo.Name, i);
-                i++;
+                imageListEventImages.Images.Add(LoadImage(photosUrl[i]));
+                listView.Items.Add(photosNames[i], i);
             }
         }
 
-        private void fetchRandomPhotos(
-            FacebookObjectCollection<Album> locationAlbums, 
-            List<Photo> photosToRetrive, 
-            int k_NumOfImages)
-        {
-            for (int i = 0; i < k_NumOfImages; i++)
-            {
-                Random rnd = new Random();
-                int albumNum = rnd.Next(locationAlbums.Count);
-                if (locationAlbums[albumNum].Count > 0)
-                {
-                    int photoNum = rnd.Next(locationAlbums[albumNum].Photos.Count);
-                    Photo selectedPhoto = locationAlbums[albumNum].Photos[photoNum];
-                    photosToRetrive.Add(selectedPhoto);
-                }
-            }
-        }
-
-        // adds 'm_LoggedInUser' events to 'listBoxEvents'
+        // adds 'collection' events to 'listBox'
         private void fetchEvents()
         {
             listBoxEvents.Items.Clear();
             listBoxEvents.DisplayMember = "Name";
-            foreach (Event fbEvent in m_LoggedInUser.Events)
+            foreach (Object obj in m_utils.Events)
             {
-                listBoxEvents.Items.Add(fbEvent);
+                listBoxEvents.Items.Add(obj);
             }
 
-            if (m_LoggedInUser.Events.Count == 0)
+            if (listBoxEvents.Items.Count == 0)
             {
                 MessageBox.Show("No Events to retrieve :(");
+            }
+        }
+
+        private void fetchCollection(ListBox i_Listbox, IEnumerable<object> i_Collection, string i_MemberToDisplay)
+        {
+            i_Listbox.Items.Clear();
+            i_Listbox.DisplayMember = i_MemberToDisplay;
+            foreach (Object obj in i_Collection)
+            {
+                i_Listbox.Items.Add(obj);
             }
         }
 

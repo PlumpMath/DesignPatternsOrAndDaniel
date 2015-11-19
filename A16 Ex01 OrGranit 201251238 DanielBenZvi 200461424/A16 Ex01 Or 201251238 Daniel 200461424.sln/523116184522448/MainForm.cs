@@ -14,31 +14,24 @@ namespace _523116184522448
 {
     public partial class MainForm : Form
     {
-        private User m_LoggedInUser;
         private EventImagesForm m_ImagesFromEventsFrom;
         private FormDanielFeature m_DanielFeatureForm;
+        private FBUtilities m_utils;
 
         public MainForm()
         {
+            m_utils = new FBUtilities();
             InitializeComponent();
-            buttonGetEvents.Enabled = true;//TODO: change both to false!
-            buttonGetImagesStats.Enabled = true;
+            buttonGetEvents.Enabled = false;
+            buttonGetImagesStats.Enabled = false;
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
-        {            
-            // Login
-            LoginResult result = FacebookService.Login(
-                "523116184522448",
-                "public_profile",
-                "user_posts",
-                "user_photos", 
-                "user_events");
-
-            // Verify input
-            if (!string.IsNullOrEmpty(result.AccessToken))
+        {
+            bool isLoggedIn = false;
+            isLoggedIn = m_utils.Login();
+            if (isLoggedIn)
             {
-                m_LoggedInUser = result.LoggedInUser;
                 fetchUserInfo();
                 buttonLogin.Enabled = false;
                 buttonGetEvents.Enabled = true;
@@ -46,26 +39,26 @@ namespace _523116184522448
             }
             else
             {
-                MessageBox.Show(result.ErrorMessage);
+                MessageBox.Show(m_utils.getLoggedInError());
             }
         }
 
         private void fetchUserInfo()
         {
-            picture_profilePictureBox.LoadAsync(m_LoggedInUser.PictureNormalURL);
+            picture_profilePictureBox.LoadAsync(m_utils.getUserPicture());
         }
 
         private void buttonGetImagesStats_Click(object sender, EventArgs e)
         {
             m_DanielFeatureForm = new FormDanielFeature();
-            m_DanielFeatureForm.User = m_LoggedInUser;
+            m_DanielFeatureForm.FBUtilities = m_utils;
             m_DanielFeatureForm.Show();
         }
 
         private void buttonGetEvents_Click(object sender, EventArgs e)
         {
             m_ImagesFromEventsFrom = new EventImagesForm();
-            m_ImagesFromEventsFrom.User = m_LoggedInUser;
+            m_ImagesFromEventsFrom.FBUtilities = m_utils;
             m_ImagesFromEventsFrom.Show();
         }
     }

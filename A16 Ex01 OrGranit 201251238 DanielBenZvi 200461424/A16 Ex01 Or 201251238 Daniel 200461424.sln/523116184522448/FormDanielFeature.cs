@@ -15,11 +15,12 @@ namespace _523116184522448
     public partial class FormDanielFeature : Form
     {
         private User m_LoggedInUser;
+        private FBUtilities m_utils;
         private GMapOverlay m_MarkersOverlay;
 
-        public User User 
+        public FBUtilities FBUtilities 
         {
-            set { m_LoggedInUser = value; }
+            set { m_utils = value; }
         }
 
         public FormDanielFeature()
