@@ -152,7 +152,7 @@ namespace _523116184522448
         {
             for (int i = 0; i < i_SelectedEventPhotosUrl.Count; i++)
             {
-                imageListEventImages.Images.Add(LoadImage(i_SelectedEventPhotosUrl[i]));
+                imageListEventImages.Images.Add(loadImage(i_SelectedEventPhotosUrl[i]));
                 listView.Items.Add(i_SelectedEventPhotosNames[i], i);
             }
         }
@@ -167,7 +167,7 @@ namespace _523116184522448
             }
         }
 
-        private Image LoadImage(string i_Url)
+        private Image loadImage(string i_Url)
         {
             System.Net.WebRequest request = System.Net.WebRequest.Create(i_Url);
             System.Net.WebResponse response = request.GetResponse();

@@ -26,7 +26,7 @@ namespace _523116184522448
             InitializeComponent();
         }
 
-        private void LoadMap()
+        private void loadMap()
         {
             gMapControl.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
             GMaps.Instance.Mode = AccessMode.ServerOnly;
@@ -54,7 +54,7 @@ namespace _523116184522448
         {
             Cursor.Current = Cursors.WaitCursor;
             fetchCollection(listBoxEvents, m_utils.Events, "Name");
-            LoadMap();
+            loadMap();
             Cursor.Current = Cursors.Default;
         }
 
