@@ -5,6 +5,7 @@ using System.Text;
 using Facebook;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
+using System.Drawing;
 
 namespace _523116184522448
 {
@@ -63,7 +64,6 @@ namespace _523116184522448
             Page location = selectedEvent.Place;
             FacebookObjectCollection<Album> locationAlbums;
 
-            //if location (page) exits we try to retrive some random photos from its Albums
             if (location != null)
             {
                 try
@@ -162,6 +162,42 @@ namespace _523116184522448
         internal bool Like()
         {
             return m_selectedPhoto.Like();
+        }
+
+        internal bool HasLocation(object p)
+        {
+            Event selectedEvent = p as Event;
+            Page page = selectedEvent.Place;
+
+            if (page != null) 
+            {
+                return page.Location != null;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        internal double[] getLatLong(object p)
+        {
+            double[] point = null;
+            Event selectedEvent = p as Event;
+            Location location = selectedEvent.Place.Location;
+            if (location != null)
+            {
+                point = new double[2];
+                point[0] = location.Latitude.Value;
+                point[1] = location.Longitude.Value;
+            }
+
+            return point;            
+        }
+
+        internal string getName(object obj)
+        {
+            Event selectedEvent = obj as Event;
+            return selectedEvent.Name;
         }
     }
 }

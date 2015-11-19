@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using FacebookWrapper.ObjectModel;
 using GMap.NET.WindowsForms;
 using GMap.NET;
 
@@ -14,7 +13,6 @@ namespace _523116184522448
 {
     public partial class FormDanielFeature : Form
     {
-        private User m_LoggedInUser;
         private FBUtilities m_utils;
         private GMapOverlay m_MarkersOverlay;
 
@@ -35,16 +33,15 @@ namespace _523116184522448
             gMapControl.SetPositionByKeywords("dubnov, Tel Aviv, Israel");
 
             m_MarkersOverlay = new GMapOverlay("markers");
-            foreach (Event fbEvent in m_LoggedInUser.Events)
+            foreach (Object obj in m_utils.Events)
             {
-                Location location = fbEvent.Place.Location;
-                if (location != null)
+                if (m_utils.HasLocation(obj))
                 {
-                    PointLatLng point = getLatLong(location);
+                    PointLatLng point = getLatLong(m_utils.getLatLong(obj));
                     GMap.NET.WindowsForms.Markers.GMarkerGoogle marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
                         point,
                         GMap.NET.WindowsForms.Markers.GMarkerGoogleType.red_small);
-                    marker.ToolTipText = fbEvent.Name;
+                    marker.ToolTipText = m_utils.getName(obj);
                     m_MarkersOverlay.Markers.Add(marker);
                 }
             }
@@ -56,35 +53,27 @@ namespace _523116184522448
         private void buttonFetchEvents_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            fetchEvents();
+            fetchCollection(listBoxEvents, m_utils.Events, "Name");
+            LoadMap();
             Cursor.Current = Cursors.Default;
         }
 
-        private void fetchEvents()
+        private void fetchCollection(ListBox i_Listbox, IEnumerable<object> i_Collection, string i_MemberToDisplay)
         {
-            listBoxEvents.Items.Clear();
-            listBoxEvents.DisplayMember = "Name";
-            foreach (Event fbEvent in m_LoggedInUser.Events)
+            i_Listbox.Items.Clear();
+            i_Listbox.DisplayMember = i_MemberToDisplay;
+            foreach (Object obj in i_Collection)
             {
-                listBoxEvents.Items.Add(fbEvent);
+                i_Listbox.Items.Add(obj);
             }
-
-            if (m_LoggedInUser.Events.Count == 0)
-            {
-                MessageBox.Show("No Events to retrieve :(");
-            }
-
-            LoadMap();
         }
 
         private void listBoxEvents_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Event selectedEvent = listBoxEvents.SelectedItem as Event;
-            Location location = selectedEvent.Place.Location;
-
-            if (location != null)
+            
+            if (m_utils.HasLocation(listBoxEvents.SelectedItem))
             {
-                gMapControl.Position = getLatLong(location);
+                gMapControl.Position = getLatLong(m_utils.getLatLong(listBoxEvents.SelectedItem));
             }
             else
             {
@@ -92,7 +81,7 @@ namespace _523116184522448
             }
         }
 
-        private PointLatLng getLatLong(Location i_location)
+        private PointLatLng getLatLong(double[] i_location)
         {
             PointLatLng coordinates;
 
@@ -102,7 +91,7 @@ namespace _523116184522448
             }
             else
             {
-                coordinates = new PointLatLng(i_location.Latitude.Value, i_location.Longitude.Value);
+                coordinates = new PointLatLng(i_location[0], i_location[1]);
             }
 
             return coordinates;
