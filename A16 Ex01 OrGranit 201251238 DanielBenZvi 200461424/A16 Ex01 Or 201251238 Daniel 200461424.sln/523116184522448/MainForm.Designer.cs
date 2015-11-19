@@ -55,7 +55,7 @@
             this.buttonEventsLocations.TabIndex = 6;
             this.buttonEventsLocations.Text = "Events Location";
             this.buttonEventsLocations.UseVisualStyleBackColor = true;
-            this.buttonEventsLocations.Click += new System.EventHandler(this.buttonGetImagesStats_Click);
+            this.buttonEventsLocations.Click += new System.EventHandler(this.buttonEventLocations_Click);
             // 
             // buttonEventsImages
             // 
@@ -65,7 +65,7 @@
             this.buttonEventsImages.TabIndex = 7;
             this.buttonEventsImages.Text = "Events Images";
             this.buttonEventsImages.UseVisualStyleBackColor = true;
-            this.buttonEventsImages.Click += new System.EventHandler(this.buttonGetEvents_Click);
+            this.buttonEventsImages.Click += new System.EventHandler(this.buttonEventImages_Click);
             // 
             // picture_profilePictureBox
             // 
