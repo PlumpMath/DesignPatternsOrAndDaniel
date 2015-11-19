@@ -30,8 +30,8 @@
         private void InitializeComponent()
         {
             this.buttonLogin = new System.Windows.Forms.Button();
-            this.buttonGetImagesStats = new System.Windows.Forms.Button();
-            this.buttonGetEvents = new System.Windows.Forms.Button();
+            this.buttonEventsLocations = new System.Windows.Forms.Button();
+            this.buttonEventsImages = new System.Windows.Forms.Button();
             this.picture_profilePictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picture_profilePictureBox)).BeginInit();
             this.SuspendLayout();
@@ -47,25 +47,25 @@
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
-            // buttonGetImagesStats
+            // buttonEventsLocations
             // 
-            this.buttonGetImagesStats.Location = new System.Drawing.Point(12, 140);
-            this.buttonGetImagesStats.Name = "buttonGetImagesStats";
-            this.buttonGetImagesStats.Size = new System.Drawing.Size(100, 100);
-            this.buttonGetImagesStats.TabIndex = 6;
-            this.buttonGetImagesStats.Text = "Images Stats";
-            this.buttonGetImagesStats.UseVisualStyleBackColor = true;
-            this.buttonGetImagesStats.Click += new System.EventHandler(this.buttonGetImagesStats_Click);
+            this.buttonEventsLocations.Location = new System.Drawing.Point(12, 140);
+            this.buttonEventsLocations.Name = "buttonEventsLocations";
+            this.buttonEventsLocations.Size = new System.Drawing.Size(100, 100);
+            this.buttonEventsLocations.TabIndex = 6;
+            this.buttonEventsLocations.Text = "Events Location";
+            this.buttonEventsLocations.UseVisualStyleBackColor = true;
+            this.buttonEventsLocations.Click += new System.EventHandler(this.buttonGetImagesStats_Click);
             // 
-            // buttonGetEvents
+            // buttonEventsImages
             // 
-            this.buttonGetEvents.Location = new System.Drawing.Point(224, 140);
-            this.buttonGetEvents.Name = "buttonGetEvents";
-            this.buttonGetEvents.Size = new System.Drawing.Size(100, 100);
-            this.buttonGetEvents.TabIndex = 7;
-            this.buttonGetEvents.Text = "Event Images";
-            this.buttonGetEvents.UseVisualStyleBackColor = true;
-            this.buttonGetEvents.Click += new System.EventHandler(this.buttonGetEvents_Click);
+            this.buttonEventsImages.Location = new System.Drawing.Point(224, 140);
+            this.buttonEventsImages.Name = "buttonEventsImages";
+            this.buttonEventsImages.Size = new System.Drawing.Size(100, 100);
+            this.buttonEventsImages.TabIndex = 7;
+            this.buttonEventsImages.Text = "Events Images";
+            this.buttonEventsImages.UseVisualStyleBackColor = true;
+            this.buttonEventsImages.Click += new System.EventHandler(this.buttonGetEvents_Click);
             // 
             // picture_profilePictureBox
             // 
@@ -81,8 +81,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(336, 263);
             this.Controls.Add(this.picture_profilePictureBox);
-            this.Controls.Add(this.buttonGetEvents);
-            this.Controls.Add(this.buttonGetImagesStats);
+            this.Controls.Add(this.buttonEventsImages);
+            this.Controls.Add(this.buttonEventsLocations);
             this.Controls.Add(this.buttonLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -95,8 +95,8 @@
 
         #endregion
         private System.Windows.Forms.Button buttonLogin;
-        private System.Windows.Forms.Button buttonGetImagesStats;
-        private System.Windows.Forms.Button buttonGetEvents;
+        private System.Windows.Forms.Button buttonEventsLocations;
+        private System.Windows.Forms.Button buttonEventsImages;
         private System.Windows.Forms.PictureBox picture_profilePictureBox;
     }
 }

@@ -15,15 +15,15 @@ namespace _523116184522448
     public partial class MainForm : Form
     {
         private EventImagesForm m_ImagesFromEventsFrom;
-        private EventLocationsForm m_DanielFeatureForm;
+        private EventLocationsForm m_EventLocationForm;
         private FBUtilities m_utils;
 
         public MainForm()
         {
             m_utils = new FBUtilities();
             InitializeComponent();
-            buttonGetEvents.Enabled = false;
-            buttonGetImagesStats.Enabled = false;
+            buttonEventsImages.Enabled = false;
+            buttonEventsLocations.Enabled = false;
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -34,8 +34,8 @@ namespace _523116184522448
             {
                 fetchUserInfo();
                 buttonLogin.Enabled = false;
-                buttonGetEvents.Enabled = true;
-                buttonGetImagesStats.Enabled = true;
+                buttonEventsImages.Enabled = true;
+                buttonEventsLocations.Enabled = true;
             }
             else
             {
@@ -45,14 +45,14 @@ namespace _523116184522448
 
         private void fetchUserInfo()
         {
-            picture_profilePictureBox.LoadAsync(m_utils.getUserPicture());
+            picture_profilePictureBox.LoadAsync(m_utils.getUserPictureUrl());
         }
 
         private void buttonGetImagesStats_Click(object sender, EventArgs e)
         {
-            m_DanielFeatureForm = new EventLocationsForm();
-            m_DanielFeatureForm.FBUtilities = m_utils;
-            m_DanielFeatureForm.Show();
+            m_EventLocationForm = new EventLocationsForm();
+            m_EventLocationForm.FBUtilities = m_utils;
+            m_EventLocationForm.Show();
         }
 
         private void buttonGetEvents_Click(object sender, EventArgs e)

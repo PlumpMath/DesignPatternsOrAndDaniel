@@ -33,15 +33,15 @@ namespace _523116184522448
             gMapControl.SetPositionByKeywords("dubnov, Tel Aviv, Israel");
 
             m_MarkersOverlay = new GMapOverlay("markers");
-            foreach (Object obj in m_utils.Events)
+            foreach (object obj in m_utils.Events)
             {
-                if (m_utils.HasLocation(obj))
+                if (m_utils.HasLocationEvent(obj))
                 {
                     PointLatLng point = getLatLong(m_utils.getLatLong(obj));
                     GMap.NET.WindowsForms.Markers.GMarkerGoogle marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
                         point,
                         GMap.NET.WindowsForms.Markers.GMarkerGoogleType.red_small);
-                    marker.ToolTipText = m_utils.getName(obj);
+                    marker.ToolTipText = m_utils.getEventName(obj);
                     m_MarkersOverlay.Markers.Add(marker);
                 }
             }
@@ -62,16 +62,15 @@ namespace _523116184522448
         {
             i_Listbox.Items.Clear();
             i_Listbox.DisplayMember = i_MemberToDisplay;
-            foreach (Object obj in i_Collection)
+            foreach (object obj in i_Collection)
             {
                 i_Listbox.Items.Add(obj);
             }
         }
 
         private void listBoxEvents_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-            if (m_utils.HasLocation(listBoxEvents.SelectedItem))
+        {       
+            if (m_utils.HasLocationEvent(listBoxEvents.SelectedItem))
             {
                 gMapControl.Position = getLatLong(m_utils.getLatLong(listBoxEvents.SelectedItem));
             }
@@ -81,18 +80,10 @@ namespace _523116184522448
             }
         }
 
-        private PointLatLng getLatLong(double[] i_location)
+        private PointLatLng getLatLong(PointD i_location)
         {
             PointLatLng coordinates;
-
-            if(i_location == null)
-            {
-                throw new Exception("Null location.");
-            }
-            else
-            {
-                coordinates = new PointLatLng(i_location[0], i_location[1]);
-            }
+            coordinates = new PointLatLng(i_location.X, i_location.Y);
 
             return coordinates;
         } 

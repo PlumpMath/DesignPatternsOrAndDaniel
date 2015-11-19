@@ -5,7 +5,6 @@ using System.Text;
 using Facebook;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
-using System.Drawing;
 
 namespace _523116184522448
 {
@@ -13,8 +12,8 @@ namespace _523116184522448
     {
         private User m_LoggedInUser;
         private LoginResult m_result;
-        private List<Photo> m_photosToDisplay;
-        private Photo m_selectedPhoto;
+        private List<Photo> m_EventPhotos;
+        private Photo m_EventSelectedPhoto;
 
         public FBUtilities()
         {
@@ -47,7 +46,7 @@ namespace _523116184522448
             return m_result.ErrorMessage;
         }
 
-        internal string getUserPicture()
+        internal string getUserPictureUrl()
         {
             return m_LoggedInUser.PictureNormalURL;
         }
@@ -57,10 +56,10 @@ namespace _523116184522448
             get { return m_LoggedInUser.Events; }     
         }
 
-        internal bool HasAlbums(object i_Page)
+        internal bool HasAlbumsEvent(object i_Event)
         {
             bool hasAlbums = false;
-            Event selectedEvent = i_Page as Event;
+            Event selectedEvent = i_Event as Event;
             Page location = selectedEvent.Place;
             FacebookObjectCollection<Album> locationAlbums;
 
@@ -83,13 +82,13 @@ namespace _523116184522448
             return hasAlbums;
         }
 
-        internal void GenerateRandomPhotos(object i_Page, int k_NumOfImages)
+        internal void GenerateRandomPhotosEvent(object i_Event, int i_NumOfImages)
         {
-            Event selectedEvent = i_Page as Event;
+            Event selectedEvent = i_Event as Event;
             FacebookObjectCollection<Album> locationAlbums = selectedEvent.Place.Albums;
-            m_photosToDisplay = new List<Photo>();
+            m_EventPhotos = new List<Photo>();
 
-            for (int i = 0; i < k_NumOfImages; i++)
+            for (int i = 0; i < i_NumOfImages; i++)
             {
                 Random rnd = new Random();
                 int albumNum = rnd.Next(locationAlbums.Count);
@@ -97,76 +96,92 @@ namespace _523116184522448
                 {
                     int photoNum = rnd.Next(locationAlbums[albumNum].Photos.Count);
                     Photo selectedPhoto = locationAlbums[albumNum].Photos[photoNum];
-                    m_photosToDisplay.Add(selectedPhoto);
+                    m_EventPhotos.Add(selectedPhoto);
                 }
 
-                m_photosToDisplay = m_photosToDisplay.Distinct().ToList();
+                m_EventPhotos = m_EventPhotos.Distinct().ToList();
             }
         }
 
-        public List<string> PhotosNames 
+        public List<string> EventPhotosNames 
         { 
             get 
             { 
                 List<string> names = new List<string>();
-                foreach (Photo photo in m_photosToDisplay)
+                foreach (Photo photo in m_EventPhotos)
                 {
                     names.Add(photo.Name);
                 }
+
                 return names;
             } 
         }
 
-        public List<string> PhotosUrls
+        public List<string> EventPhotosUrls
         {
             get
             {
                 List<string> urls = new List<string>();
-                foreach (Photo photo in m_photosToDisplay)
+                foreach (Photo photo in m_EventPhotos)
                 {
                     urls.Add(photo.PictureNormalURL);
                 }
+
                 return urls;
             }
         }
 
-        public Object SelectedPhoto { 
+        public object EventSelectedPhoto 
+        { 
             set 
             {
-                m_selectedPhoto = m_photosToDisplay[(int) value];
+                m_EventSelectedPhoto = m_EventPhotos[(int) value];
             } 
         }
 
-        public IEnumerable<object> Comments { get { return m_selectedPhoto.Comments; } }
-
-        internal void resetSelectedPhoto()
-        {
-            m_selectedPhoto = null;
+        public IEnumerable<object> EventPhotoComments 
+        { 
+            get 
+            { 
+                return m_EventSelectedPhoto.Comments; 
+            } 
         }
 
-        public bool HasSelectedPhoto { get { return m_selectedPhoto != null; } }
-
-        internal bool Comment(string p)
+        internal void resetEventSelectedPhoto()
         {
-            Comment comment =  m_selectedPhoto.Comment(p);
+            m_EventSelectedPhoto = null;
+        }
+
+        public bool HasEventSelectedPhoto 
+        { 
+            get 
+            { 
+                return m_EventSelectedPhoto != null; 
+            } 
+        }
+
+        internal bool CommentOnEventSelctedPhoto(string i_Comment)
+        {
+            Comment comment = m_EventSelectedPhoto.Comment(i_Comment);
             return comment != null;
         }
 
-        public bool LikedByUser { 
+        public bool HasEventSelectedPhotoLikedByUser 
+        { 
             get 
             { 
-                return m_selectedPhoto.LikedBy.Contains(m_LoggedInUser); 
+                return m_EventSelectedPhoto.LikedBy.Contains(m_LoggedInUser); 
             } 
         }
 
-        internal bool Like()
+        internal bool LikeEventSelectedPhoto()
         {
-            return m_selectedPhoto.Like();
+            return m_EventSelectedPhoto.Like();
         }
 
-        internal bool HasLocation(object p)
+        internal bool HasLocationEvent(object i_Event)
         {
-            Event selectedEvent = p as Event;
+            Event selectedEvent = i_Event as Event;
             Page page = selectedEvent.Place;
 
             if (page != null) 
@@ -179,25 +194,30 @@ namespace _523116184522448
             }
         }
 
-        internal double[] getLatLong(object p)
+        internal PointD getLatLong(object i_Event)
         {
-            double[] point = null;
-            Event selectedEvent = p as Event;
+            PointD point = new PointD();
+            Event selectedEvent = i_Event as Event;
             Location location = selectedEvent.Place.Location;
             if (location != null)
             {
-                point = new double[2];
-                point[0] = location.Latitude.Value;
-                point[1] = location.Longitude.Value;
+                point.X = location.Latitude.Value;
+                point.Y = location.Longitude.Value;
             }
 
             return point;            
         }
 
-        internal string getName(object obj)
+        internal string getEventName(object i_Event)
         {
-            Event selectedEvent = obj as Event;
+            Event selectedEvent = i_Event as Event;
             return selectedEvent.Name;
         }
+    }
+
+    public struct PointD
+    {
+        public double X;
+        public double Y;
     }
 }

@@ -16,7 +16,6 @@ namespace _523116184522448
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
-            //TODO: remove lines:
         }
     }
 }
