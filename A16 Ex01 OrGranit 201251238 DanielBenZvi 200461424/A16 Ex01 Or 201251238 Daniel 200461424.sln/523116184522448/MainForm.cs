@@ -48,14 +48,14 @@ namespace _523116184522448
             picture_profilePictureBox.LoadAsync(m_utils.getUserPictureUrl());
         }
 
-        private void buttonGetImagesStats_Click(object sender, EventArgs e)
+        private void buttonEventLocations_Click(object sender, EventArgs e)
         {
             m_EventLocationForm = new EventLocationsForm();
             m_EventLocationForm.FBUtilities = m_utils;
             m_EventLocationForm.Show();
         }
 
-        private void buttonGetEvents_Click(object sender, EventArgs e)
+        private void buttonEventImages_Click(object sender, EventArgs e)
         {
             m_ImagesFromEventsFrom = new EventImagesForm();
             m_ImagesFromEventsFrom.FBUtilities = m_utils;
